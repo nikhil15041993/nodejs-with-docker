@@ -1,0 +1,31 @@
+version: "3.3"
+
+services: 
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - 3000:3000
+    depends_on: 
+      - mysql_server
+  
+  mysql_server:
+    image: mysql:8.0
+    environment: 
+      - MYSQL_DATABASE=test_db
+      - MYSQL_USER=dan
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret
+
+    volumes:
+      - node-db2:/var/lib/mysql
+
+
+
+volumes:
+  node-db2:
+
+    
+
+    
